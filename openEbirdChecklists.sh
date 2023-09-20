@@ -41,7 +41,12 @@ if [ $# -lt 1 -o $# -gt 2 ]; then
     exit 1
 fi
 
-# Declare indexed arrays for keys and values
+# Check if jq is installed
+if ! command -v jq &>/dev/null; then
+    echo "Error: 'jq' is not installed. Please install it to run this script."
+    exit 1
+fi
+
 # Bash v3 doesn't allow associative arrays yet
 keys=()
 values=()
