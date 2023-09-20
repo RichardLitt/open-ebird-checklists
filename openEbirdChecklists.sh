@@ -47,27 +47,28 @@ if ! command -v jq &>/dev/null; then
     exit 1
 fi
 
+# Declare indexed arrays for county_names and region_codes
 # Bash v3 doesn't allow associative arrays yet
-keys=()
-values=()
+county_names=()
+region_codes=()
 
 # Function to add key-value pairs
 add_key_value() {
-  keys+=("$1")
-  values+=("$2")
+  county_names+=("$1")
+  region_codes+=("$2")
 }
 
-# Function to get a value by key
+# Function to get a value by county_name
 get_value() {
-  local key="$1"
-  for ((i = 0; i < ${#keys[@]}; i++)); do
-    if [[ "${keys[i]}" == "$key" ]]; then
-      echo "${values[i]}"
+  local county_name="$1"
+  for ((i = 0; i < ${#county_names[@]}; i++)); do
+    if [[ "${county_names[i]}" == "$county_name" ]]; then
+      echo "${region_codes[i]}"
       return
     fi
   done
   # Pass through if not a Vermont county
-  echo "$key"
+  echo "$county_name"
 }
 
 add_key_value "Addison" "US-VT-001"
