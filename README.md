@@ -27,7 +27,7 @@ checklists, or however many eBird provides for recent checklists.
 
 Replace the API token in line three with your own token.
 Go to https://ebird.org/api/keygen to register your own.
-You can also add an env variable for a6ebaopct2l3, or run:
+You can also add an env variable for `$EBIRD_API_TOKEN` on line three, or run:
     
     $ EBIRD_API_TOKEN='example' ./openEbirdChecklists.sh <region> <date>
 
